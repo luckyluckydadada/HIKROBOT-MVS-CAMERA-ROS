@@ -1,5 +1,6 @@
 # HIKROBOT-MVS-CAMERA-ROS
 The ros driver package of Hikvision Industrial Camera SDK. Support configuration parameters, the parameters have been optimized, and the photos have been transcoded to rgb format.
+Please install mvs, https://blog.csdn.net/weixin_41965898/article/details/116801491
 
 # Install
 ```

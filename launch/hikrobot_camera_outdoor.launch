@@ -1,0 +1,8 @@
+<launch>
+    <rosparam file="$(find hikrobot_camera)/config/camera-outdoor.yaml" command="load"/>
+    <node pkg="hikrobot_camera" type="hikrobot_camera" name="hikrobot_camera" respawn="true" output="screen" /> 
+    <!-- 
+    pkg指出ROS应该运行哪个pkg
+    type是可执行文件的名称
+    name则是可以任意给出的，它覆盖了原文件中ros::init指定的node的名字 -->
+</launch>

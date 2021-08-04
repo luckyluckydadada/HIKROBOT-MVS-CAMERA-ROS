@@ -1,14 +1,18 @@
+# true 1 和 false 0 
 width: 3072             #图像宽度
 height: 2048            #图像高度
 Offset_x: 0             #X方向偏置
 Offset_y: 0             #Y方向偏置
 
-FrameRateEnable: true   #使能
+FrameRateEnable: true   #使能 
 FrameRate: 10           #帧率
 
-ExposureTime: 50000      #曝光时间
+ExposureTime: 5000     #曝光时间
+
 GammaEnable: true
-Gamma: 0.7              #伽马因子 
-GainAuto: 2             #亮度自動  
-SaturationEnable: true
-Saturation: 0          #饱和度 128
+Gamma: 0.7              #伽马因子
+
+GainAuto: 2             #亮度的固定增益
+
+SaturationEnable: false
+Saturation: 128          #饱和度

@@ -7,6 +7,15 @@
 #include <camera_info_manager/camera_info_manager.h>
 #include "hikrobot_camera.hpp"
 
+// 剪裁掉照片和雷达没有重合的视角，去除多余像素可以使rosbag包变小
+#define FIT_LIDAR_CUT_IMAGE true
+#if FIT_LIDAR_CUT_IMAGE
+#define FIT_min_x 420
+#define FIT_min_y 70
+#define FIT_max_x 2450
+#define FIT_max_y 2000
+#endif 
+
 using namespace std;
 using namespace cv;
 
@@ -42,8 +51,13 @@ int main(int argc, char **argv)
         {
             continue;
         }
-
+#if FIT_LIDAR_CUT_IMAGE
+        cv::Rect area(FIT_min_x,FIT_min_y,FIT_max_x-FIT_min_x,FIT_max_y-FIT_min_y); // cut区域：从左上角像素坐标x，y，宽，高
+        cv::Mat src_new = src(area);
+        cv_ptr->image = src_new;
+#else
         cv_ptr->image = src;
+#endif
         image_msg = *(cv_ptr->toImageMsg());
         image_msg.header.stamp = ros::Time::now();  // ros发出的时间不是快门时间
         image_msg.header.frame_id = "hikrobot_camera";

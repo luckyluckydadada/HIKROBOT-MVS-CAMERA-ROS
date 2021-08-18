@@ -8,12 +8,12 @@
 #include "hikrobot_camera.hpp"
 
 // 剪裁掉照片和雷达没有重合的视角，去除多余像素可以使rosbag包变小
-#define FIT_LIDAR_CUT_IMAGE true
+#define FIT_LIDAR_CUT_IMAGE false
 #if FIT_LIDAR_CUT_IMAGE
-#define FIT_min_x 420
-#define FIT_min_y 70
-#define FIT_max_x 2450
-#define FIT_max_y 2000
+    #define FIT_min_x 420
+    #define FIT_min_y 70
+    #define FIT_max_x 2450
+    #define FIT_max_y 2000
 #endif 
 
 using namespace std;
